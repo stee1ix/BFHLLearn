@@ -1,14 +1,14 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import SplashScreen from '../screens/SplashScreen';
+import SplashScreen from '../../screens/SplashScreen';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import AuthNavigator from './AuthNavigator';
+import AuthNavigator from '../Auth';
 
 const Stack = createNativeStackNavigator();
 
 export default function MainNavigator() {
-  return (
-    <NavigationContainer>
+  const renderMainStack = () => {
+    return (
       <Stack.Navigator
         screenOptions={{
           headerShown: false,
@@ -16,6 +16,8 @@ export default function MainNavigator() {
         <Stack.Screen name="SplashScreen" component={SplashScreen} />
         <Stack.Screen name="AuthNavigator" component={AuthNavigator} />
       </Stack.Navigator>
-    </NavigationContainer>
-  );
+    );
+  };
+
+  return <NavigationContainer>{renderMainStack()}</NavigationContainer>;
 }

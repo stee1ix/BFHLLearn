@@ -1,15 +1,20 @@
 import React from 'react';
 import {StatusBar, StyleSheet, View} from 'react-native';
-import MainNavigator from './ReactApp/navigators/MainNavigator';
+import MainNavigator from './ReactApp/navigators/Main';
 import {Provider as PaperProvider} from 'react-native-paper';
+import {QueryClient, QueryClientProvider} from 'react-query';
+
+const queryClient = new QueryClient();
 
 const App = () => {
   return (
     <PaperProvider>
-      <View style={styles.container}>
-        <StatusBar barStyle="dark-content" />
-        <MainNavigator />
-      </View>
+      <QueryClientProvider client={queryClient}>
+        <View style={styles.container}>
+          <StatusBar barStyle="dark-content" />
+          <MainNavigator />
+        </View>
+      </QueryClientProvider>
     </PaperProvider>
   );
 };
